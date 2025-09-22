@@ -43,7 +43,7 @@ public class CountryCodeConverter {
                 String[] parts = line.split("\t");
 
                 String country = parts[0];
-                String countryCode = parts[2];
+                String countryCode = parts[parts.length - 2].toLowerCase();
                 countryCodeToCountry.put(countryCode, country);
                 countryToCountryCode.put(country, countryCode);
             }
@@ -60,7 +60,7 @@ public class CountryCodeConverter {
      * @return the name of the country corresponding to the code
      */
     public String fromCountryCode(String code) {
-        return countryCodeToCountry.get(code);
+        return countryCodeToCountry.get(code.toLowerCase());
     }
 
     /**
